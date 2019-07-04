@@ -2,7 +2,7 @@
 	"name": "jest-time-logger",
 	"version": "1.0.0",
 	"description": "A watch plugin for logging the duration of jest tests and running metrics against accumulated output",
-	"main": "jest-time-logger.js",
+	"main": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
