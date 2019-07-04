@@ -1,0 +1,22 @@
+{
+	"name": "jest-time-logger",
+	"version": "1.0.0",
+	"description": "A watch plugin for logging the duration of jest tests and running metrics against accumulated output",
+	"main": "jest-time-logger.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/dbrudner/jest-time-logger.git"
+	},
+	"author": "Dave Brudner",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/dbrudner/jest-time-logger/issues"
+	},
+	"homepage": "https://github.com/dbrudner/jest-time-logger#readme",
+	"dependencies": {
+		"date-fns": "^1.30.1"
+	}
+}
