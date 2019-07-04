@@ -60,6 +60,7 @@ module.exports = class JestTimeLogger {
 			log = this.getLog();
 		} catch (err) {
 			console.warn(`\n\n${err.message}\n\n`);
+
 			return new Promise(function(resolve, reject) {
 				resolve(false);
 			});
