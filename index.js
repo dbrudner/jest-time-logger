@@ -94,7 +94,7 @@ module.exports = class JestTimeLogger {
 			}, 0) / 1000;
 
 		console.table({
-			"Total time  spent running tests (hh:mm:ss)": formattedTime,
+			"Total time spent running tests (hh:mm:ss)": formattedTime,
 			"Total test runs logged": numberOfTests,
 			"Average test run time": averageTestTime,
 			"Longest test run time": `${longestTest.toFixed(2)} seconds`,
