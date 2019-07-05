@@ -1,6 +1,6 @@
 {
 	"name": "@dbrudner/jest-time-logger",
-	"version": "1.0.5",
+	"version": "1.0.6",
 	"description": "A watch plugin for logging the duration of jest tests and running metrics against accumulated output",
 	"main": "index.js",
 	"scripts": {
