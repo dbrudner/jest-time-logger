@@ -12,7 +12,7 @@ module.exports = class JestTimeLogger {
 			return JSON.parse(fs.readFileSync(this.getLogPath(), "utf-8"));
 		} catch (err) {
 			throw new Error(
-				"No log file found. Run a test to create a log file."
+				"No log file found. Run a test to create a log file.",
 			);
 		}
 	}
@@ -28,7 +28,7 @@ module.exports = class JestTimeLogger {
 
 			const newTestLog = {
 				start,
-				finish
+				finish,
 			};
 
 			let log = {};
@@ -48,7 +48,7 @@ module.exports = class JestTimeLogger {
 	getUsageInfo() {
 		return {
 			key: "d",
-			prompt: "get metrics from jest-time-logger"
+			prompt: "get metrics from jest-time-logger",
 		};
 	}
 
@@ -68,7 +68,7 @@ module.exports = class JestTimeLogger {
 		const totalTimeMs = log.tests.reduce(
 			(total, { start, finish }) =>
 				total + differenceInMilliseconds(finish, start),
-			0
+			0,
 		);
 
 		let milliseconds = parseInt((totalTimeMs % 1000) / 10);
@@ -83,7 +83,7 @@ module.exports = class JestTimeLogger {
 		const formattedTime = `${hours}:${minutes}:${seconds}.${milliseconds}`;
 		const numberOfTests = log.tests.length;
 		const averageTestTime = `${(totalTimeMs / numberOfTests / 1000).toFixed(
-			2
+			2,
 		)} seconds`;
 
 		const longestTest =
@@ -92,12 +92,23 @@ module.exports = class JestTimeLogger {
 				return diff > longestTimeTime ? diff : longestTimeTime;
 			}, 0) / 1000;
 
-		console.table({
+		const isConsoleTableCompatible =
+			parseFloat(process.version.substr(1, 2)) >= 10;
+
+		const table = {
 			"Total time spent running tests (hh:mm:ss)": formattedTime,
 			"Total test runs logged": numberOfTests,
 			"Average test run time": averageTestTime,
-			"Longest test run time": `${longestTest.toFixed(2)} seconds`
-		});
+			"Longest test run time": `${longestTest.toFixed(2)} seconds`,
+		};
+
+		if (isConsoleTableCompatible) {
+			console.table(table);
+		} else {
+			Object.entries(table).forEach(metric => {
+				console.log(`${metric[0]}: ${metric[1]}`);
+			});
+		}
 
 		return new Promise(function(resolve, reject) {
 			resolve(false);
